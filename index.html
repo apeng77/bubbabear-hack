@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubba Bear Hack</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Press Start 2P', cursive;
+            background-color: #ffb6c1;
+            padding: 50px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            line-height: 1.5;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .hidden { display: none; }
+        button {
+            padding: 16px 32px;
+            font-size: 16px;
+            border: 2px solid white;
+            background-color: #88e788;
+            color: #ffb6c1;
+            cursor: pointer;
+            font-family: 'Press Start 2P', cursive;
+            margin-top: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s;
+        }
+        button:hover {
+            background-color: white;
+            transform: scale(1.1);
+        }
+        h1 {
+            font-size: 105%;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+            animation: bounce 1.5s infinite alternate;
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+        .emoji-border {
+            position: absolute;
+            font-size: 26px;
+            animation: float 3s infinite alternate ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+        .top-left { top: 10px; left: 10px; }
+        .top-right { top: 10px; right: 10px; }
+        .bottom-left { bottom: 10px; left: 10px; }
+        .bottom-right { bottom: 10px; right: 10px; }
+        .exploding-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0;
+            animation: explode 1.5s ease-out infinite;
+        }
+        @keyframes explode {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="emoji-border top-left">❤️</div>
+    <div class="emoji-border top-right">❤️</div>
+    <div class="emoji-border bottom-left">❤️</div>
+    <div class="emoji-border bottom-right">❤️</div>
+    <div id="exploding-hearts" class="exploding-hearts"></div>
+    
+    <h1 id="message">Oh no! Your computer got hacked by Bubba Bear! hehe</h1>
+    <button id="nextButton" onclick="nextMessage()">Unhack Computer</button>
+    <div id="yesNoButtons" class="hidden">
+        <button onclick="valentineYes()">Yes</button>
+        <button onclick="valentineNo()">No</button>
+    </div>
+    
+    <script>
+        let messages = [
+            "Finding Solution.....",
+            "One solution found!",
+            "<span style='color: white;'>Solution is to be Bubba's Valentine!</span>",
+            "So will you be my Valentine?"
+        ];
+        let buttonTexts = ["Continue", "See solution", "Next", "Next"];
+        let currentIndex = 0;
+        let noCount = 0;
+
+        function nextMessage() {
+            if (currentIndex < messages.length - 1) {
+                document.getElementById("message").innerHTML = messages[currentIndex];
+                document.getElementById("nextButton").innerText = buttonTexts[currentIndex];
+                currentIndex++;
+            } else {
+                document.getElementById("message").innerHTML = messages[currentIndex];
+                document.getElementById("nextButton").classList.add("hidden");
+                document.getElementById("yesNoButtons").classList.remove("hidden");
+            }
+        }
+
+        function valentineYes() {
+            document.getElementById("message").innerText = "Your Computer has been unhacked and you can spend Valentine's with Bubba!";
+            document.getElementById("yesNoButtons").classList.add("hidden");
+            triggerHearts();
+        }
+
+        function valentineNo() {
+            if (noCount < 14) {
+                document.getElementById("message").innerText = "Please";
+                noCount++;
+            } else {
+                document.getElementById("message").innerText = "Fine PooPoo head, your computer stays hacked and no Prince St ever!!";
+                document.getElementById("yesNoButtons").classList.add("hidden");
+            }
+        }
+
+        function triggerHearts() {
+            const container = document.getElementById("exploding-hearts");
+            setInterval(() => {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "❤️";
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                container.appendChild(heart);
+                setTimeout(() => heart.remove(), 1500);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
