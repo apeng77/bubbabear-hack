@@ -93,6 +93,10 @@
     <div class="emoji-border bottom-right">❤️</div>
     <div id="exploding-hearts" class="exploding-hearts"></div>
 
+    <audio id="BackgroundMusic" loop>
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
+    
     <audio id="YesMusic" loop>
         <source src="gwenchana.mp3" type="audio/mpeg">
     </audio>
@@ -130,15 +134,31 @@
                 document.getElementById("yesNoButtons").classList.remove("hidden");
             }
         }
+
+        function stopAllMusic() {
+            document.getElementById("BackgroundMusic").pause();
+            document.getElementById("BackgroundMusic").currentTime = 0;
+            document.getElementById("YesMusic").pause();
+            document.getElementById("YesMusic").currentTime = 0;
+            document.getElementById("NoMusic").pause();
+            document.getElementById("NoMusic").currentTime = 0;
+        }
+
+        window.onload = function() {
+            let bgMusic = document.getElementById("BackgroundMusic");
+            bgMusic.volume = 0.5;
+            bgMusic.play();
+};
         
         function valentineYes() {
             document.getElementById("message").innerText = "Your Computer has been unhacked and you can spend Valentine's with Bubba!";
             document.getElementById("yesNoButtons").classList.add("hidden");
             triggerHearts();
 
-            let music = document.getElementById("YesMusic");
-    music.volume = 0.5; // Volume
-    music.play();
+            stopAllMusic();
+            let YesMusic = document.getElementById("YesMusic");
+            YesMusic.volume = 0.5; // Volume
+            YesMusic.play();
         }
 
         function valentineNo() {
@@ -149,9 +169,10 @@
                 document.getElementById("message").innerText = "Fine PooPoo head, your computer stays hacked and no Prince St ever!!";
                 document.getElementById("yesNoButtons").classList.add("hidden");
                 
-                let music = document.getElementById("NoMusic");
-    music.volume = 0.5; // Volume
-    music.play();
+                stopAllMusic();
+                let NoMusic = document.getElementById("NoMusic");
+                NoMusic.volume = 0.5; // Volume
+                NoMusic.play();
             }
         }
 
