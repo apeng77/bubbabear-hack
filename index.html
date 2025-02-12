@@ -137,12 +137,8 @@
             triggerHearts();
 
             let music = document.getElementById("YesMusic");
-    music.volume = 0.5; // Adjust volume if needed
+    music.volume = 0.5; // Volume
     music.play();
-
-            setTimeout(() => {
-                window.close();
-            }, 5000);
         }
 
         function valentineNo() {
@@ -154,12 +150,9 @@
                 document.getElementById("yesNoButtons").classList.add("hidden");
                 
                 let music = document.getElementById("NoMusic");
-    music.volume = 0.5; // Adjust volume if needed
+    music.volume = 0.5; // Volume
     music.play();
             }
-            setTimeout(() => {
-                window.close();
-            }, 5000);
         }
 
         function triggerHearts() {
