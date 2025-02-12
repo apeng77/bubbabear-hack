@@ -100,11 +100,7 @@
     <audio id="NoMusic" loop>
         <source src="sadge.mp3" type="audio/mpeg">
     </audio>
-
-    <audio id="ClickMusic" loop>
-        <source src="bubble.mp3" type="audio/mpeg">
-    </audio>
-    
+   
     <h1 id="message">Oh no! Your computer got hacked by Bubba Bear! hehe</h1>
     <button id="nextButton" onclick="nextMessage()">Unhack Computer</button>
     <div id="yesNoButtons" class="hidden">
@@ -134,12 +130,6 @@
                 document.getElementById("yesNoButtons").classList.remove("hidden");
             }
         }
-
-        function playClickSound() {
-        let sound = document.getElementById("ClickMusic");
-        sound.currentTime = 0; // Reset sound for rapid clicks
-        sound.play();
-    }
         
         function valentineYes() {
             document.getElementById("message").innerText = "Your Computer has been unhacked and you can spend Valentine's with Bubba!";
