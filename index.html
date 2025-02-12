@@ -92,7 +92,11 @@
     <div class="emoji-border bottom-left">❤️</div>
     <div class="emoji-border bottom-right">❤️</div>
     <div id="exploding-hearts" class="exploding-hearts"></div>
-    
+
+    <audio id="backgroundMusic" loop>
+        <source src="https://raw.githubusercontent.com/your-username/your-repo/main/your-audio.mp3" type="audio/mpeg">
+    </audio>
+
     <h1 id="message">Oh no! Your computer got hacked by Bubba Bear! hehe</h1>
     <button id="nextButton" onclick="nextMessage()">Unhack Computer</button>
     <div id="yesNoButtons" class="hidden">
@@ -127,6 +131,10 @@
             document.getElementById("message").innerText = "Your Computer has been unhacked and you can spend Valentine's with Bubba!";
             document.getElementById("yesNoButtons").classList.add("hidden");
             triggerHearts();
+
+            let music = document.getElementById("backgroundMusic");
+    music.volume = 0.5; // Adjust volume if needed
+    music.play();
         }
 
         function valentineNo() {
