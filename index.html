@@ -146,9 +146,13 @@
 
         window.onload = function() {
             let BackgroundMusic = document.getElementById("BackgroundMusic");
-            BackgroundMusic.volume = 1.5;
-            BackgroundMusic.play();
-};
+
+            document.body.addEventListener("click", function() {
+                BackgroundMusic.muted = false;  // Unmute the music
+                BackgroundMusic.volume = 0.5;    // Adjust volume
+                BackgroundMusic.play();          // Play music
+            }, { once: true }); // Ensures it only triggers once
+        }
         
         function valentineYes() {
             document.getElementById("message").innerText = "Your Computer has been unhacked and you can spend Valentine's with Bubba!";
