@@ -93,8 +93,12 @@
     <div class="emoji-border bottom-right">❤️</div>
     <div id="exploding-hearts" class="exploding-hearts"></div>
 
-    <audio id="backgroundMusic" loop>
+    <audio id="YesMusic" loop>
         <source src="gwenchana.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="NoMusic" loop>
+        <source src="sadge.mp3" type="audio/mpeg">
     </audio>
 
     <h1 id="message">Oh no! Your computer got hacked by Bubba Bear! hehe</h1>
@@ -132,7 +136,7 @@
             document.getElementById("yesNoButtons").classList.add("hidden");
             triggerHearts();
 
-            let music = document.getElementById("backgroundMusic");
+            let music = document.getElementById("YesMusic");
     music.volume = 0.5; // Adjust volume if needed
     music.play();
         }
@@ -144,6 +148,10 @@
             } else {
                 document.getElementById("message").innerText = "Fine PooPoo head, your computer stays hacked and no Prince St ever!!";
                 document.getElementById("yesNoButtons").classList.add("hidden");
+                
+                let music = document.getElementById("NoMusic");
+    music.volume = 0.5; // Adjust volume if needed
+    music.play();
             }
         }
 
